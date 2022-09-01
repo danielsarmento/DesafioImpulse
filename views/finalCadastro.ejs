@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+    $("#btnPrint").live("click", function () {
+      var divContents = $("#text").html();
+      var printWindow = window.open('', '', 'height=400,width=800');
+      printWindow.document.write('<html><head><title>Html to PDF</title>');
+      printWindow.document.write('</head><body >');
+      printWindow.document.write(divContents );
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    });
+  </script>
+  </head>
+  <body>
+    <form id="form1">
+    <div id="text">
+
+      <h3>Dados do Formulário</h3>
+      <p>Nome: <%= nome %> </p>
+      ____________________________________
+      <p>E-mail: <%= email %> </p>
+      ____________________________________
+      <p>CPF: <%= cpf %> </p>
+      ____________________________________
+      <p>CEP: <%= cep %> </p>
+      ____________________________________
+      <p>Nascimento: <%= data %> </p>
+      ____________________________________
+      <p>Gênero: <%= genero %> </p>
+      ____________________________________
+      <p>Estado Civil: <%= E_civil %> </p>
+      ____________________________________
+      <p>Profissão: <%= profissao %> </p>
+      ____________________________________
+      <p>Cidade: <%= cidade %> </p>
+      ____________________________________
+      <p>Estado: <%= estado %> </p>
+      ____________________________________
+    </div>
+      <input type="button" value="Salvar em PDF" id="btnPrint" />
+    </form>
+    <form action="/cadastrarCliente" method="post">
+      <button>Próximo</button>
+    </form>
+  </body>
+</html>
